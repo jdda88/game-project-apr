@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| Mister Fluffy |</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- welcome msg & instructions -->
+
+    <div id="game-intro">
+      <img class="game-logo" src="/logoblack.png" alt="" />
+      <p class="welcome-msg">
+        You agreed to babysit your Grandma's grumpy cat, Mister Fluffy... for a
+        price of course. To get him to like you, you'll need to find the right
+        places to pet him. You have one minute to find the magic spot and avoid
+        his scratches, or he'll scratch you up and you won't earn your money!
+      </p>
+      <span>
+        How to play: Use your mouse to find the best spots to pet. Watch out for
+        his sharp claws!
+      </span>
+      <br />
+      <button id="start-button" type="button">START GAME</button>
+    </div>
+
+    <!-- game screen starts her -->
+
+    <div id="game-screen">
+      <div class="containers" id="stats-container">
+        <p>Lives: <span id="lives">3</span></p>
+      </div>
+      <img id="cat" src="cropped-cat.png" alt="cat" />
+      <div class="containers" id="clock-container">
+        <p>Time left:<span id="clock">60 seconds</span></p>
+      </div>
+    </div>
+
+    <!-- game over screen -->
+
+    <div id="game-end">
+      <h1>Game Over</h1>
+      <br />
+      <button id="restart-button">Restart</button>
+    </div>
+
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+  </body>
+</html>

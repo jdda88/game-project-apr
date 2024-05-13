@@ -1,0 +1,108 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  background-image: url("living-room.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 99vw
+}
+#game-intro {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 0;
+  height: 85%;
+}
+
+span {
+  margin: 25px;
+  text-align: center;
+  color: rgb(76, 153, 220);
+  font-size: 19px;
+  font-family: monospace;
+}
+
+.game-logo {
+  width: 350px;
+}
+
+.welcome-msg {
+  text-align: center;
+  color: rgb(76, 153, 220);
+  /* color: rgb(243, 244, 244); */
+  font-size: 19px;
+  font-family: monospace;
+}
+
+.button-block {
+  display: flex;
+  justify-content: center;
+}
+
+#start-button {
+  font-size: 30px;
+  background-color: #050400;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+#start-button:hover {
+  opacity: 1;
+}
+
+#game-screen {
+  display: none;
+  height: 0;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-bottom: 17%;
+}
+
+#game-end {
+  display: none;
+}
+
+#cat {
+  display: none;
+  width: 35vw;
+  height: fit-content;
+}
+
+#restart-button {
+  font-size: 30px;
+  background-color: #050400;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.containers {
+  display: none;
+  height: 0;
+}
