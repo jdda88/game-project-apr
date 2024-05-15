@@ -2,22 +2,30 @@ window.onload = function () {
   console.log("window is loaded");
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
-  const cursor = document.getElementById('custom-cursor');
+  const cursor = document.getElementById("custom-cursor");
   const catElement = document.getElementById("normal-cat");
-  const angryCatElement = document.getElementById('angry-cat')
-  const happyCatElement = document.getElementById("happy-cat")
-  const treat = document.getElementById('treat-popup');
-  const hearts = document.getElementById('hearts-popup');
+  const angryCatElement = document.getElementById("angry-cat");
+  const happyCatElement = document.getElementById("happy-cat");
+  const treat = document.getElementById("treat-popup");
+  const hearts = document.getElementById("hearts-popup");
+  let clickCount = 0;
 
-  document.addEventListener('mousemove', (e) =>{
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-
-  })
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.pageX + "px";
+    cursor.style.top = e.pageY + "px";
+  });
 
   treat.addEventListener("click", () => {
-    game.lives++
-})
+    game.lives++;
+    limitClicks();
+    // treat.remove();
+  });
+
+  function limitClicks() {
+    if (game.lives >= 10) {
+      treat.remove();
+    }
+  }
 
   let game;
 
@@ -39,7 +47,7 @@ window.onload = function () {
   }
   restartButton.addEventListener("click", () => {
     console.log("clicking restart button");
-    
+
     restartGame();
   });
   startButton.addEventListener("click", () => {
@@ -61,14 +69,13 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
-      angryCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
+      angryCatElement.style.display = "none";
 
       console.log("Good 1");
       game.happyCat();
       game.timer++; /* freezes the timer for 1 second */
-
     }
 
     if (
@@ -77,9 +84,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 2");
       game.lives--;
       game.angryCat();
@@ -91,9 +98,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      angryCatElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      catElement.style.display = "inherit";
       console.log("Good 3");
       game.happyCat();
     }
@@ -104,9 +111,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 4");
       game.lives--;
       game.angryCat();
@@ -118,9 +125,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = "none";
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 5");
       game.lives--;
       game.angryCat();
@@ -132,9 +139,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
       console.log("Good 6");
       game.timer++;
       game.happyCat();
@@ -146,9 +153,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
       console.log("Good 7");
       game.happyCat();
     }
@@ -159,9 +166,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 8");
       game.lives--;
       game.angryCat();
@@ -173,9 +180,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 9");
       game.lives--;
       game.angryCat();
@@ -187,9 +194,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 10");
       game.lives--;
       game.angryCat();
@@ -201,9 +208,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("super bad spot");
       /* belly rub = -1 life & -1 second */
       game.timer--;
@@ -217,15 +224,14 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 11");
       game.lives--;
       game.angryCat();
     }
   });
-
 
   happyCatElement.addEventListener("click", (e) => {
     let catRect = happyCatElement.getBoundingClientRect();
@@ -241,21 +247,19 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
-      angryCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
+      angryCatElement.style.display = "none";
 
-      let hearts = document.getElementById("hearts-popup");
       console.log("hearts");
       hearts.style.display = "block";
       setTimeout(() => {
         hearts.style.display = "none";
       }, 3000);
-      
+
       console.log("Good 1");
       game.happyCat();
       game.timer++; /* freezes the timer for 1 second */
-
     }
 
     if (
@@ -264,9 +268,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 2");
       game.lives--;
       game.angryCat();
@@ -278,9 +282,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      angryCatElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      catElement.style.display = "inherit";
 
       let hearts = document.getElementById("hearts-popup");
       console.log("hearts");
@@ -288,7 +292,7 @@ window.onload = function () {
       setTimeout(() => {
         hearts.style.display = "none";
       }, 3000);
-      
+
       console.log("Good 3");
       game.happyCat();
     }
@@ -299,9 +303,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 4");
       game.lives--;
       game.angryCat();
@@ -313,9 +317,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = "none";
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 5");
       game.lives--;
       game.angryCat();
@@ -327,23 +331,23 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
+      if (treat) {
+        treat.style.display = "inherit";
+        setTimeout(() => {
+          treat.style.display = "none";
+        }, 3000);
+      }
 
-      let treat = document.getElementById("treat-popup");
-      treat.style.display = "inherit";
+      let hearts = document.getElementById("hearts-popup");
+      console.log("hearts");
+      hearts.style.display = "block";
       setTimeout(() => {
-        treat.style.display = "none";
-      }, 1400);
-      
-    let hearts = document.getElementById("hearts-popup");
-    console.log("hearts");
-    hearts.style.display = "block";
-    setTimeout(() => {
-      hearts.style.display = "none";
-    }, 3000);
-      
+        hearts.style.display = "none";
+      }, 3000);
+
       console.log("Good 6");
       game.timer++;
       game.happyCat();
@@ -355,9 +359,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
 
       let hearts = document.getElementById("hearts-popup");
       console.log("hearts");
@@ -365,7 +369,7 @@ window.onload = function () {
       setTimeout(() => {
         hearts.style.display = "none";
       }, 3000);
-      
+
       console.log("Good 7");
       game.happyCat();
     }
@@ -376,9 +380,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 8");
       game.lives--;
       game.angryCat();
@@ -390,9 +394,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 9");
       game.lives--;
       game.angryCat();
@@ -404,9 +408,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 10");
       game.lives--;
       game.angryCat();
@@ -418,9 +422,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("super bad spot");
       /* belly rub = -1 life & -1 second */
       game.timer--;
@@ -434,15 +438,14 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 11");
       game.lives--;
       game.angryCat();
     }
   });
-  
 
   angryCatElement.addEventListener("click", (e) => {
     let catRect = angryCatElement.getBoundingClientRect();
@@ -458,13 +461,12 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
-      angryCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
+      angryCatElement.style.display = "none";
       console.log("Good 1");
       game.happyCat();
       game.timer++; /* freezes the timer for 1 second */
-
     }
 
     if (
@@ -473,9 +475,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 2");
       game.lives--;
       game.angryCat();
@@ -487,9 +489,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      angryCatElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      catElement.style.display = "inherit";
       console.log("Good 3");
       game.happyCat();
     }
@@ -500,9 +502,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      catElement.style.display = "none";
+      happyCatElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 4");
       game.lives--;
       game.angryCat();
@@ -514,9 +516,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      happyCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = "none";
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
       console.log("Bad 5");
       game.lives--;
       game.angryCat();
@@ -528,9 +530,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
       console.log("Good 6");
       game.timer++;
       game.happyCat();
@@ -542,9 +544,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      angryCatElement.style.display = 'none'
-      catElement.style.display = 'none'
-      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = "none";
+      catElement.style.display = "none";
+      happyCatElement.style.display = "inherit";
       console.log("Good 7");
       game.happyCat();
     }
@@ -555,9 +557,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 8");
       game.lives--;
       game.angryCat();
@@ -569,9 +571,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 9");
       game.lives--;
       game.angryCat();
@@ -583,9 +585,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 10");
       game.lives--;
       game.angryCat();
@@ -597,9 +599,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("super bad spot");
       /* belly rub = -1 life & -1 second */
       game.timer--;
@@ -613,16 +615,12 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
-      catElement.style.display = 'none'
-      angryCatElement.style.display = 'inherit'
-      happyCatElement.style.display = 'none'
+      catElement.style.display = "none";
+      angryCatElement.style.display = "inherit";
+      happyCatElement.style.display = "none";
       console.log("Bad 11");
       game.lives--;
       game.angryCat();
     }
   });
-
-
-
-  
-  };
+};

@@ -165,11 +165,21 @@ h1 {
   animation: shake 0.8s ease-in-out infinite;
 
 }
+#cats-hearts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+
+}
 
 #hearts-popup{
   display: none;
-  width: 10vw;
+  width: 20vw;
   position: absolute;
+  margin: 0 auto;
+  margin-left: 10%;
   
 }
 
