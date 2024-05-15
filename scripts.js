@@ -11,9 +11,14 @@ window.onload = function () {
 
   document.addEventListener('mousemove', (e) =>{
     cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px'
+    cursor.style.top = e.pageY + 'px';
 
   })
+
+  treat.addEventListener("click", () => {
+    game.lives++
+})
+
   let game;
 
   function startGame() {
@@ -331,9 +336,7 @@ window.onload = function () {
       setTimeout(() => {
         treat.style.display = "none";
       }, 1400);
-      treat.addEventListener("click", () => {
-        game.lives++
-    })
+      
     let hearts = document.getElementById("hearts-popup");
     console.log("hearts");
     hearts.style.display = "block";
