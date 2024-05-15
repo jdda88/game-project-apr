@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- welcome msg & instructions -->
-
+    
     <div id="game-intro">
       <img class="game-logo" src="/logoblack.png" alt="" />
       <p class="welcome-msg">
@@ -29,12 +29,17 @@
 
     <div id="game-screen">
       <div class="containers" id="stats-container">
-        <p>Lives: <span id="lives">3</span></p>
+        <p>Lives: <span id="lives">20</span></p>
+        <img id="treat-popup" src="treat.png" alt="Treat Image"/>
+        <imd id="hearts-popup" src="hearts.png" alt="Hearts Image"/>
       </div>
-      <img id="cat" src="cropped-cat.png" alt="cat" />
+      <img id="normal-cat" src="normalcatfacevector.png" alt="cat" />
+      <img id="happy-cat" src="happycatfacevector.png" alt="cat" />
+      <img id="angry-cat" src="angrycatfacevector.png" alt="cat" />
       <div class="containers" id="clock-container">
-        <p>Time left:<span id="clock">10</span></p>
+        <p>Time left:<span id="clock">60</span></p>
       </div>
+      
     </div>
 
     <!-- game over screen -->
@@ -48,7 +53,7 @@
       <br />
       <button id="restart-button">Restart</button>
     </div>
-
+    <div id="custom-cursor"></div>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="scripts.js"></script>

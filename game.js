@@ -4,12 +4,14 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.containers = document.getElementsByClassName("containers");
-    this.cat = document.getElementById("cat");
+    this.cat = document.getElementById("normal-cat");
+    this.theAngryCat = document.getElementById('angry-cat')
+    this.theHappyCat = document.getElementById('happy-cat')
     // this.player = new Player(this.gameScreen, 215, 450, 66, 150, '../images/shelby.png')
     this.height = "85vw";
     this.score = 0;
-    this.lives = 3;
-    this.timer = 10;
+    this.lives = 20;
+    this.timer = 60;
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = 1000 / 60;
@@ -29,6 +31,10 @@ class Game {
     this.gameScreen.style.height = `${this.height}px`;
 
     this.cat.style.display = "block";
+    this.theAngryCat.style.display = 'none'
+    this.theHappyCat.style.display = 'none'
+
+
 
     this.startScreen.style.display = "none";
     this.startScreen.style.padding = 0;
@@ -158,11 +164,11 @@ class Game {
     this.gameEndScreen.style.display = "inherit";
 
     if (this.timer <= 0 && this.lives) {
-      this.catAttack.display = "none";
+      this.catAttack.style.display = "none";
       this.catWin.style.display = "inherit";
       this.winMessage.innerText = `CONGRATULATIONS!`;
       this.endMessage.innerHTML = `You won, with ${this.lives} lifes left you are clearly a cat person!`;
-    } else {
+    } if(this.lives <= 0) {
       this.catWin.style.display = "none";
       this.catAttack.style.display = "inherit";
       this.winMessage.innerText = `GAME OVER`;

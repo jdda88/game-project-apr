@@ -3,12 +3,26 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  cursor: none;
 }
 
 html {
   background-image: url("living-room.jpg");
   background-size: cover;
   background-position: center;
+}
+#custom-cursor{
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-image: url('open-hand.png');
+  background-size: cover;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+
+
 }
 
 body {
@@ -79,6 +93,7 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: fixed;
 }
 
 h1 {
@@ -96,12 +111,68 @@ h1 {
   /* display: flex; */
 }
 
-#cat {
+#normal-cat {
   display: none;
-  width: 35vw;
+  width: 27vw;
   height: fit-content;
   margin: 0 auto;
 }
+#happy-cat{
+  display: none;
+  width: 27vw;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+
+#angry-cat{
+  display: none;
+  width: 27vw;
+  height: fit-content;
+  margin: 0 auto;
+}
+/* shake effect for the treat */
+#treat-popup:hover{
+  animation: Shake 0.5s linear infinite;
+}
+@keyframes Shake { 
+  0% { 
+      transform: rotate(5deg); 
+  } 
+
+  25% { 
+      transform: rotate(-6deg); 
+  } 
+
+  50% { 
+      transform: rotate(5deg); 
+  } 
+
+  75% { 
+      transform: rotate(-6deg); 
+  } 
+
+  100% { 
+      transform: rotate(5deg); 
+  } 
+}
+/*  */
+
+#treat-popup{
+  display: none;
+  width: 6vw;
+  position:  absolute;  
+  animation: shake 0.8s ease-in-out infinite;
+
+}
+
+#hearts-popup{
+  display: none;
+  width: 10vw;
+  position: absolute;
+  
+}
+
 
 #cat-gif {
   width: 40vh;

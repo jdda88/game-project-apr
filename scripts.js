@@ -2,9 +2,18 @@ window.onload = function () {
   console.log("window is loaded");
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
+  const cursor = document.getElementById('custom-cursor');
+  const catElement = document.getElementById("normal-cat");
+  const angryCatElement = document.getElementById('angry-cat')
+  const happyCatElement = document.getElementById("happy-cat")
+  const treat = document.getElementById('treat-popup');
+  const hearts = document.getElementById('hearts-popup');
 
-  const catElement = document.getElementById("cat");
+  document.addEventListener('mousemove', (e) =>{
+    cursor.style.left = e.pageX + 'px';
+    cursor.style.top = e.pageY + 'px'
 
+  })
   let game;
 
   function startGame() {
@@ -25,6 +34,7 @@ window.onload = function () {
   }
   restartButton.addEventListener("click", () => {
     console.log("clicking restart button");
+    
     restartGame();
   });
   startButton.addEventListener("click", () => {
@@ -46,9 +56,14 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = 'none'
+
       console.log("Good 1");
       game.happyCat();
       game.timer++; /* freezes the timer for 1 second */
+
     }
 
     if (
@@ -57,6 +72,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("Bad 2");
       game.lives--;
       game.angryCat();
@@ -68,6 +86,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
+      angryCatElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'inherit'
       console.log("Good 3");
       game.happyCat();
     }
@@ -78,6 +99,9 @@ window.onload = function () {
       e.offsetY >= 0 &&
       e.offsetY <= catSectionHeight
     ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
       console.log("Bad 4");
       game.lives--;
       game.angryCat();
@@ -89,6 +113,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
       console.log("Bad 5");
       game.lives--;
       game.angryCat();
@@ -100,6 +127,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
       console.log("Good 6");
       game.timer++;
       game.happyCat();
@@ -111,6 +141,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
       console.log("Good 7");
       game.happyCat();
     }
@@ -121,6 +154,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight &&
       e.offsetY <= catSectionHeight * 2
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("Bad 8");
       game.lives--;
       game.angryCat();
@@ -132,6 +168,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("Bad 9");
       game.lives--;
       game.angryCat();
@@ -143,6 +182,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("Bad 10");
       game.lives--;
       game.angryCat();
@@ -154,6 +196,9 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("super bad spot");
       /* belly rub = -1 life & -1 second */
       game.timer--;
@@ -167,9 +212,414 @@ window.onload = function () {
       e.offsetY >= catSectionHeight * 2 &&
       e.offsetY <= catSectionHeight * 3
     ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
       console.log("Bad 11");
       game.lives--;
       game.angryCat();
     }
   });
-};
+
+
+  happyCatElement.addEventListener("click", (e) => {
+    let catRect = happyCatElement.getBoundingClientRect();
+    let catWidth = catRect.width;
+    let catHeight = catRect.height;
+
+    let catSectionWidth = catWidth / 4;
+    let catSectionHeight = catHeight / 3;
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = 'none'
+
+      let hearts = document.getElementById("hearts-popup");
+      console.log("hearts");
+      hearts.style.display = "block";
+      setTimeout(() => {
+        hearts.style.display = "none";
+      }, 3000);
+      
+      console.log("Good 1");
+      game.happyCat();
+      game.timer++; /* freezes the timer for 1 second */
+
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 2");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      angryCatElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'inherit'
+
+      let hearts = document.getElementById("hearts-popup");
+      console.log("hearts");
+      hearts.style.display = "block";
+      setTimeout(() => {
+        hearts.style.display = "none";
+      }, 3000);
+      
+      console.log("Good 3");
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      console.log("Bad 4");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      console.log("Bad 5");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+
+      let treat = document.getElementById("treat-popup");
+      treat.style.display = "inherit";
+      setTimeout(() => {
+        treat.style.display = "none";
+      }, 1400);
+      treat.addEventListener("click", () => {
+        game.lives++
+    })
+    let hearts = document.getElementById("hearts-popup");
+    console.log("hearts");
+    hearts.style.display = "block";
+    setTimeout(() => {
+      hearts.style.display = "none";
+    }, 3000);
+      
+      console.log("Good 6");
+      game.timer++;
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+
+      let hearts = document.getElementById("hearts-popup");
+      console.log("hearts");
+      hearts.style.display = "block";
+      setTimeout(() => {
+        hearts.style.display = "none";
+      }, 3000);
+      
+      console.log("Good 7");
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 8");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 9");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 10");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("super bad spot");
+      /* belly rub = -1 life & -1 second */
+      game.timer--;
+      game.lives--;
+      game.superAngryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 11");
+      game.lives--;
+      game.angryCat();
+    }
+  });
+  
+
+  angryCatElement.addEventListener("click", (e) => {
+    let catRect = angryCatElement.getBoundingClientRect();
+    let catWidth = catRect.width;
+    let catHeight = catRect.height;
+
+    let catSectionWidth = catWidth / 4;
+    let catSectionHeight = catHeight / 3;
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+      angryCatElement.style.display = 'none'
+      console.log("Good 1");
+      game.happyCat();
+      game.timer++; /* freezes the timer for 1 second */
+
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 2");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      angryCatElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'inherit'
+      console.log("Good 3");
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= 0 &&
+      e.offsetY <= catSectionHeight
+    ) {
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      console.log("Bad 4");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      happyCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      console.log("Bad 5");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+      console.log("Good 6");
+      game.timer++;
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      angryCatElement.style.display = 'none'
+      catElement.style.display = 'none'
+      happyCatElement.style.display = 'inherit'
+      console.log("Good 7");
+      game.happyCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= catSectionHeight &&
+      e.offsetY <= catSectionHeight * 2
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 8");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= 0 &&
+      e.offsetX <= catSectionWidth &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 9");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth &&
+      e.offsetX <= catSectionWidth * 2 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 10");
+      game.lives--;
+      game.angryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 2 &&
+      e.offsetX <= catSectionWidth * 3 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("super bad spot");
+      /* belly rub = -1 life & -1 second */
+      game.timer--;
+      game.lives--;
+      game.superAngryCat();
+    }
+
+    if (
+      e.offsetX >= catSectionWidth * 3 &&
+      e.offsetX <= catSectionWidth * 4 &&
+      e.offsetY >= catSectionHeight * 2 &&
+      e.offsetY <= catSectionHeight * 3
+    ) {
+      catElement.style.display = 'none'
+      angryCatElement.style.display = 'inherit'
+      happyCatElement.style.display = 'none'
+      console.log("Bad 11");
+      game.lives--;
+      game.angryCat();
+    }
+  });
+
+
+
+  
+  };
