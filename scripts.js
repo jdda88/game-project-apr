@@ -255,7 +255,7 @@ window.onload = function () {
       hearts.style.display = "block";
       setTimeout(() => {
         hearts.style.display = "none";
-      }, 3000);
+      }, 1000);
 
       console.log("Good 1");
       game.happyCat();
@@ -291,7 +291,7 @@ window.onload = function () {
       hearts.style.display = "block";
       setTimeout(() => {
         hearts.style.display = "none";
-      }, 3000);
+      }, 1000);
 
       console.log("Good 3");
       game.happyCat();
@@ -346,7 +346,7 @@ window.onload = function () {
       hearts.style.display = "block";
       setTimeout(() => {
         hearts.style.display = "none";
-      }, 3000);
+      }, 1000);
 
       console.log("Good 6");
       game.timer++;
@@ -368,7 +368,7 @@ window.onload = function () {
       hearts.style.display = "block";
       setTimeout(() => {
         hearts.style.display = "none";
-      }, 3000);
+      }, 1000);
 
       console.log("Good 7");
       game.happyCat();
