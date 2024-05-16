@@ -22,7 +22,7 @@ window.onload = function () {
   });
 
   function limitClicks() {
-    if (game.lives >= 10) {
+    if (game.lives >= 2) {
       treat.remove();
     }
   }

@@ -52,7 +52,7 @@ span {
 }
 
 .game-logo {
-  width: 350px;
+  width: 410px;
 }
 
 .welcome-msg {
@@ -61,6 +61,7 @@ span {
   /* color: rgb(243, 244, 244); */
   font-size: 19px;
   font-family: monospace;
+  font-weight: bold;
 }
 
 .button-block {

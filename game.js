@@ -165,13 +165,13 @@ class Game {
       this.catAttack.style.display = "none";
       this.catWin.style.display = "inherit";
       this.winMessage.innerText = `CONGRATULATIONS!`;
-      this.endMessage.innerHTML = `You won, with ${this.lives} lifes left you are clearly a cat person!`;
+      this.endMessage.innerHTML = `You won with ${this.lives} lives left! You are clearly a cat person!`;
     }
     if (this.lives <= 0) {
       this.catWin.style.display = "none";
       this.catAttack.style.display = "inherit";
       this.winMessage.innerText = `GAME OVER`;
-      this.endMessage.innerHTML = ` You lost, grab some band-aids for you!`;
+      this.endMessage.innerHTML = ` You lost! Grab the band-aids!`;
     }
   }
 }
